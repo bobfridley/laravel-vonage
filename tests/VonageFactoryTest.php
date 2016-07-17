@@ -21,26 +21,26 @@ class VonageFactoryTest extends AbstractTestBenchTestCase
     public function testMakeStandard()
     {
         $factory = $this->getVonageFactory();
-        $return = $factory->make(['token' => 'your-token', 'app' => 'your-app']);
+        $return = $factory->make(['username' => 'your-username', 'password' => 'your-password']);
         $this->assertInstanceOf(Client::class, $return);
     }
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The vonage client requires authentication.
      */
-    public function testMakeWithoutToken()
+    public function testMakeWithoutUsername()
     {
         $factory = $this->getVonageFactory();
-        $factory->make(['app' => 'your-app']);
+        $factory->make(['password' => 'your-password']);
     }
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The vonage client requires authentication.
      */
-    public function testMakeWithoutSecret()
+    public function testMakeWithoutPassword()
     {
         $factory = $this->getVonageFactory();
-        $factory->make(['token' => 'your-token']);
+        $factory->make(['password' => 'your-username']);
     }
     protected function getVonageFactory()
     {
