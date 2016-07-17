@@ -33,50 +33,10 @@ return [
             'password' => env('VONAGE_PASSWORD'),
             'method'   => 'password'
         ],
-        'HarryF' => [
-            'username' => 'HarryF',
-            'password' => 'tG==F6;8bK',
-            'method'   => 'password'
-        ],
-        'tthome' => [
-            'username' => 'tthome',
-            'password' => '',
-            'method'   => 'password'
-        ],
-        'ChadRoeder' => [
-            'username' => 'ChadRoeder',
-            'password' => 'j=b183r=!E',
-            'method'   => 'password'
-        ],
-        'BillOfc' => [
-            'username' => 'BillOfc',
-            'password' => 'Y@Q8;$w3h$',
-            'method'   => 'password'
-        ],
-        'SusanY' => [
-            'username' => 'SusanY',
-            'password' => 'wY$1p7dBen',
-            'method'   => 'password'
-        ],
-        'AlbreeB' => [
-            'username' => 'AlbreeB',
-            'password' => 'YTz@41!h$!',
-            'method'   => 'password'
-        ],
-        'bobfridley' => [
-            'username' => 'bobfridley',
-            'password' => '5X1;RhT202',
-            'method'   => 'password'
-        ],
-        'TaylorC' => [
-            'username' => 'TaylorC',
-            'password' => 'n;YG=x303=',
-            'method'   => 'password'
-        ],
-        'MeganHill' => [
-            'username' => 'MeganHill',
-            'password' => 'S=C0bWmD;y',
-            'method'   => 'password'
+        'alternative' => [
+            'username'  => 'your-username',
+            'password'  => 'your-password',
+            'method'    => 'password'
         ],
     ],
 ];
