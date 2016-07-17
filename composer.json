@@ -1,0 +1,43 @@
+{
+    "name": "bob-fridley/vonage",
+    "description": "Vonage is a Vonage Bridge For Laravel 5",
+    "keywords": ["laravel", "framework", "vonage", "Bob Fridley", "BobFridley"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bob Fridley",
+            "email": "robert.fridley@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/contracts": "5.1.*|5.2.*|5.3.*",
+        "illuminate/support": "5.1.*|5.2.*|5.3.*",
+        "graham-campbell/manager": "^2.3"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "^3.1",
+        "mockery/mockery": "^0.9.4",
+        "phpunit/phpunit": "^4.8|^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BobFridley\\Vonage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BobFridley\\Tests\\Vonage\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.4-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
