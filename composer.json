@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PinnacleWeb\\LaravelVonage\\": "src/"
+            "PinnacleWeb\\Vonage\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PinnacleWeb\\Tests\\LaravelVonage\\": "tests/"
+            "PinnacleWeb\\Tests\\Vonage\\": "tests/"
         }
     },
     "config": {
