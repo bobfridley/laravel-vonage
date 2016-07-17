@@ -1,5 +1,5 @@
 {
-    "name": "pinnacle-web/laravel-vonage",
+    "name": "pinnacle-web/vonage",
     "description": "Vonage is a Vonage Bridge For Laravel 5",
     "keywords": ["laravel", "framework", "vonage", "Bob Fridley", "BobFridley"],
     "license": "MIT",
