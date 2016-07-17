@@ -1,5 +1,5 @@
 {
-    "name": "bob-fridley/vonage",
+    "name": "pinnacle-web/vonage",
     "description": "Vonage is a Vonage Bridge For Laravel 5",
     "keywords": ["laravel", "framework", "vonage", "Bob Fridley", "BobFridley"],
     "license": "MIT",
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BobFridley\\Vonage\\": "src/"
+            "PinnacleWeb\\Vonage\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BobFridley\\Tests\\Vonage\\": "tests/"
+            "PinnacleWeb\\Tests\\Vonage\\": "tests/"
         }
     },
     "config": {
@@ -35,7 +35,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.4-dev"
+            "pre-release": "1.0"
         }
     },
     "minimum-stability": "dev",
