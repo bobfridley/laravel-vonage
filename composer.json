@@ -35,7 +35,7 @@
     },
     "extra": {
         "branch-alias": {
-            "pre-release": "1.0"
+            "pre-release": "1.0-dev"
         }
     },
     "minimum-stability": "dev",
