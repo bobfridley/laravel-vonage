@@ -40,10 +40,10 @@ class VonageFactory
      */
     protected function getConfig(array $config)
     {
-        if (!array_key_exists('token', $config) || !array_key_exists('app', $config)) {
+        if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
             throw new InvalidArgumentException('The vonage client requires authentication.');
         }
-        return array_only($config, ['token', 'app']);
+        return array_only($config, ['username', 'password']);
     }
     /**
      * Get the vonage client.
@@ -54,6 +54,6 @@ class VonageFactory
      */
     protected function getClient(array $auth)
     {
-        return new Client($auth['token'], $auth['app']);
+        return new Client($auth['username'], $auth['password']);
     }
 }
