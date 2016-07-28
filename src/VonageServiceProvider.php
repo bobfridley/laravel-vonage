@@ -7,12 +7,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace BobFridley\Vonage;
-use Vonage\Client;
+use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
+
 /**
  * This is the vonage service provider class.
  *
@@ -29,6 +32,7 @@ class VonageServiceProvider extends ServiceProvider
     {
         $this->setupConfig();
     }
+
     /**
      * Setup the config.
      *
@@ -37,13 +41,16 @@ class VonageServiceProvider extends ServiceProvider
     protected function setupConfig()
     {
         $source = realpath(__DIR__.'/../config/vonage.php');
+//dd('source', $source);
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('vonage.php')]);
         } elseif ($this->app instanceof LumenApplication) {
             $this->app->configure('vonage');
         }
+
         $this->mergeConfigFrom($source, 'vonage');
     }
+
     /**
      * Register the service provider.
      *
@@ -55,6 +62,7 @@ class VonageServiceProvider extends ServiceProvider
         $this->registerManager();
         $this->registerBindings();
     }
+
     /**
      * Register the factory class.
      *
@@ -65,8 +73,10 @@ class VonageServiceProvider extends ServiceProvider
         $this->app->singleton('vonage.factory', function () {
             return new VonageFactory();
         });
+
         $this->app->alias('vonage.factory', VonageFactory::class);
     }
+
     /**
      * Register the manager class.
      *
@@ -77,10 +87,12 @@ class VonageServiceProvider extends ServiceProvider
         $this->app->singleton('vonage', function (Container $app) {
             $config = $app['config'];
             $factory = $app['vonage.factory'];
+
             return new VonageManager($config, $factory);
         });
         $this->app->alias('vonage', VonageManager::class);
     }
+
     /**
      * Register the bindings.
      *
@@ -94,6 +106,7 @@ class VonageServiceProvider extends ServiceProvider
         });
         $this->app->alias('vonage.connection', Client::class);
     }
+    
     /**
      * Get the services provided by the provider.
      *

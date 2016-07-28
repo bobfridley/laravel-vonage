@@ -12,6 +12,7 @@
 namespace BobFridley\Vonage\Authenticators;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 
 /**
  * This is the abstract authenticator class.

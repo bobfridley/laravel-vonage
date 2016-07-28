@@ -8,12 +8,14 @@
  * file that was distributed with this source code.
  */
 namespace BobFridley\Tests\Vonage;
-use Vonage\Client;
+use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 use BobFridley\Vonage\VonageFactory;
 use BobFridley\Vonage\VonageManager;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 use Illuminate\Contracts\Config\Repository;
 use Mockery;
+
 /**
  * This is the vonage manager test class.
  *
@@ -32,6 +34,7 @@ class VonageManagerTest extends AbstractTestBenchTestCase
         $this->assertInstanceOf('Vonage\Client', $return);
         $this->assertArrayHasKey('vonage', $manager->getConnections());
     }
+    
     protected function getManager(array $config)
     {
         $repo = Mockery::mock(Repository::class);

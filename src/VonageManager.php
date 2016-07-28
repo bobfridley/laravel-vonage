@@ -50,6 +50,7 @@ class VonageManager extends AbstractManager
     public function __construct(Repository $config, VonageFactory $factory)
     {
         parent::__construct($config);
+        
         $this->factory = $factory;
     }
 
