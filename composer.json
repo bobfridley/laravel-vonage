@@ -1,12 +1,21 @@
 {
-    "name": "bobfridley/vonage",
-    "description": "A Vonage bridge for Laravel 5",
-    "keywords": ["laravel", "framework", "vonage", "Bob Fridley", "BobFridley"],
+    "name": "bobfridley/laravel-vonage",
+    "description": "Manage Vonage extensions and calls",
+    "keywords": [
+        "laravel",
+        "framework",
+        "vonage",
+        "Bob Fridley",
+        "BobFridley"
+    ],
+    "homepage": "https://github.com/bobfridley/laravel-vonage",
     "license": "MIT",
     "authors": [
         {
             "name": "Bob Fridley",
-            "email": "robert.fridley@gmail.com"
+            "email": "robert.fridley@gmail.com",
+            "homepage": "https://github.com/bobfridley/laravel-vonage",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -29,6 +38,9 @@
         "psr-4": {
             "BobFridley\\Tests\\Vonage\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "config": {
         "preferred-install": "dist"
