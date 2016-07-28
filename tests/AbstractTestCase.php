@@ -10,6 +10,7 @@
 namespace BobFridley\Tests\Vonage;
 use BobFridley\Vonage\VonageServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
+
 /**
  * This is the abstract test case class.
  *

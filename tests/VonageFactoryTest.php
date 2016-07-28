@@ -8,9 +8,11 @@
  * file that was distributed with this source code.
  */
 namespace BobFridley\Tests\Vonage;
-use Vonage\Client;
+use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 use BobFridley\Vonage\VonageFactory;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+
 /**
  * This is the vonage factory test class.
  *
@@ -24,6 +26,7 @@ class VonageFactoryTest extends AbstractTestBenchTestCase
         $return = $factory->make(['username' => 'your-username', 'password' => 'your-password']);
         $this->assertInstanceOf(Client::class, $return);
     }
+    
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The vonage client requires authentication.
@@ -33,6 +36,7 @@ class VonageFactoryTest extends AbstractTestBenchTestCase
         $factory = $this->getVonageFactory();
         $factory->make(['password' => 'your-password']);
     }
+    
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage The vonage client requires authentication.
@@ -42,6 +46,7 @@ class VonageFactoryTest extends AbstractTestBenchTestCase
         $factory = $this->getVonageFactory();
         $factory->make(['password' => 'your-username']);
     }
+    
     protected function getVonageFactory()
     {
         return new VonageFactory();
