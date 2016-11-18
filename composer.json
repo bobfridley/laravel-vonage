@@ -1,7 +1,13 @@
 {
     "name": "bobfridley/vonage",
     "description": "A Vonage bridge for Laravel 5",
-    "keywords": ["laravel", "framework", "vonage", "Bob Fridley", "BobFridley"],
+    "keywords": [
+        "laravel",
+        "framework",
+        "vonage",
+        "Bob Fridley",
+        "BobFridley"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -35,7 +41,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "1.2-dev"
         }
     },
     "minimum-stability": "dev",
