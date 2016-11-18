@@ -8,6 +8,7 @@
  * file that was distributed with this source code.
  */
 namespace BobFridley\Vonage;
+
 use Vonage\Client;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
