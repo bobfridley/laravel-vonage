@@ -8,9 +8,7 @@
  * file that was distributed with this source code.
  */
 namespace BobFridley\Vonage;
-
-use GuzzleHttp\Client;
-use GuzzleHttp\Cookie\CookieJar;
+use Vonage\Client;
 use InvalidArgumentException;
 /**
  * This is the vonage factory class.
@@ -20,26 +18,17 @@ use InvalidArgumentException;
 class VonageFactory
 {
     /**
-     * [$base_uri description]
-     * 
-     * @var string
-     */
-    public $base_uri = 'https://my.vonagebusiness.com';
-
-    /**
      * Make a new vonage client.
      *
      * @param string[] $config
      *
-     * @return \GuzzleHttp\Client
+     * @return \Vonage\Client
      */
     public function make(array $config)
     {
         $config = $this->getConfig($config);
-
         return $this->getClient($config);
     }
-    
     /**
      * Get the configuration data.
      *
@@ -54,10 +43,8 @@ class VonageFactory
         if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
             throw new InvalidArgumentException('The vonage client requires authentication.');
         }
-
         return array_only($config, ['username', 'password']);
     }
-    
     /**
      * Get the vonage client.
      *
@@ -67,18 +54,6 @@ class VonageFactory
      */
     protected function getClient(array $auth)
     {
-        $this->client = new Client(array('base_uri' => $this->base_uri));
-        $this->cookie = new CookieJar();
-
-        $response = $this->client->get($this->base_uri . '/appserver/rest/user/null', [
-            'cookies' => $this->cookie,
-            'query' => [
-                'htmlLogin' => $auth['username'],
-                'htmlPassword' => $auth['password']
-            ],
-            'headers' => ['X-Vonage' => 'vonage']
-        ]);
-
-        return $this->client;
+        return new Client($auth['username'], $auth['password']);
     }
 }

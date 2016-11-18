@@ -10,7 +10,7 @@
 namespace BobFridley\Tests\Vonage\Facades;
 use BobFridley\Vonage\VonageManager;
 use BobFridley\Vonage\Facades\Vonage;
-use BobFridley\TestBenchCore\FacadeTrait;
+use GrahamCampbell\TestBenchCore\FacadeTrait;
 use BobFridley\Tests\Vonage\AbstractTestCase;
 /**
  * This is the vonage facade test class.

@@ -8,8 +8,7 @@
  * file that was distributed with this source code.
  */
 namespace BobFridley\Tests\Vonage;
-use GuzzleHttp\Client;
-use GuzzleHttp\Cookie\CookieJar;
+use Vonage\Client;
 use BobFridley\Vonage\VonageFactory;
 use BobFridley\Vonage\VonageManager;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
@@ -21,25 +20,20 @@ use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 class ServiceProviderTest extends AbstractTestCase
 {
     use ServiceProviderTrait;
-
     public function testVonageFactoryIsInjectable()
     {
         $this->assertIsInjectable(VonageFactory::class);
     }
-
     public function testVonageManagerIsInjectable()
     {
         $this->assertIsInjectable(VonageManager::class);
     }
-    
     public function testBindings()
     {
         $this->assertIsInjectable(Client::class);
-
         $original = $this->app['vonage.connection'];
         $this->app['vonage']->reconnect();
         $new = $this->app['vonage.connection'];
-
         $this->assertNotSame($original, $new);
         $this->assertEquals($original, $new);
     }
