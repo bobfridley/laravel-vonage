@@ -1,12 +1,27 @@
 {
+<<<<<<< HEAD
     "name": "bobfridley/workflowmax",
     "description": "A WorkFlowMax bridge for Laravel 5",
     "keywords": ["laravel", "framework", "workflowmax", "Bob Fridley", "BobFridley"],
+=======
+    "name": "bobfridley/laravel-vonage",
+    "description": "Manage Vonage extensions and calls",
+    "keywords": [
+        "laravel",
+        "framework",
+        "vonage",
+        "Bob Fridley",
+        "BobFridley"
+    ],
+    "homepage": "https://github.com/bobfridley/laravel-vonage",
+>>>>>>> 6fd76fed9b21de779d89a1e9d9f2feb6523da391
     "license": "MIT",
     "authors": [
         {
             "name": "Bob Fridley",
-            "email": "robert.fridley@gmail.com"
+            "email": "robert.fridley@gmail.com",
+            "homepage": "https://github.com/bobfridley/laravel-vonage",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -29,6 +44,9 @@
         "psr-4": {
             "BobFridley\\Tests\\WorkFlowMax\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "config": {
         "preferred-install": "dist"
