@@ -1,18 +1,19 @@
 <?php
 /*
- * This file is part of Laravel Vonage.
+ * This file is part of Laravel WorkFlowMax.
  *
  * (c) Bob Fridley <robert.fridley@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace BobFridley\Tests\Vonage;
+namespace BobFridley\Tests\WorkFlowMax;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
-use BobFridley\Vonage\VonageFactory;
-use BobFridley\Vonage\VonageManager;
+use BobFridley\WorkFlowMax\WorkFlowMaxFactory;
+use BobFridley\WorkFlowMax\WorkFlowMaxManager;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
+
 /**
  * This is the service provider test class.
  *
@@ -22,23 +23,23 @@ class ServiceProviderTest extends AbstractTestCase
 {
     use ServiceProviderTrait;
 
-    public function testVonageFactoryIsInjectable()
+    public function testWorkFlowMaxFactoryIsInjectable()
     {
-        $this->assertIsInjectable(VonageFactory::class);
+        $this->assertIsInjectable(WorkFlowMaxFactory::class);
     }
 
-    public function testVonageManagerIsInjectable()
+    public function testWorkFlowMaxManagerIsInjectable()
     {
-        $this->assertIsInjectable(VonageManager::class);
+        $this->assertIsInjectable(WorkFlowMaxManager::class);
     }
     
     public function testBindings()
     {
         $this->assertIsInjectable(Client::class);
 
-        $original = $this->app['vonage.connection'];
-        $this->app['vonage']->reconnect();
-        $new = $this->app['vonage.connection'];
+        $original = $this->app['workflowmax.connection'];
+        $this->app['workflowmax']->reconnect();
+        $new = $this->app['workflowmax.connection'];
 
         $this->assertNotSame($original, $new);
         $this->assertEquals($original, $new);

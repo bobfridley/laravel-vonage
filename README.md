@@ -1,2 +1,2 @@
-# laravel-vonage
-A Vonage bridge for Laravel 5
+# laravel-workflowmax
+A WorkFlowMax bridge for Laravel 5

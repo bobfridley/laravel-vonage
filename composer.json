@@ -1,7 +1,7 @@
 {
-    "name": "bobfridley/vonage",
-    "description": "A Vonage bridge for Laravel 5",
-    "keywords": ["laravel", "framework", "vonage", "Bob Fridley", "BobFridley"],
+    "name": "bobfridley/workflowmax",
+    "description": "A WorkFlowMax bridge for Laravel 5",
+    "keywords": ["laravel", "framework", "workflowmax", "Bob Fridley", "BobFridley"],
     "license": "MIT",
     "authors": [
         {
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BobFridley\\Vonage\\": "src/"
+            "BobFridley\\WorkFlowMax\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BobFridley\\Tests\\Vonage\\": "tests/"
+            "BobFridley\\Tests\\WorkFlowMax\\": "tests/"
         }
     },
     "config": {

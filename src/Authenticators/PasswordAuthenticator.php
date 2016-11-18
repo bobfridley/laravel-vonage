@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of Laravel Vonage.
+ * This file is part of Laravel WorkFlowMax.
  *
  * (c) Bob Fridley <robert.fridley@gmail.com>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BobFridley\Vonage\Authenticators;
+namespace BobFridley\WorkFlowMax\Authenticators;
 
 use InvalidArgumentException;
 
@@ -35,11 +35,11 @@ class PasswordAuthenticator extends AbstractAuthenticator implements Authenticat
             throw new InvalidArgumentException('The client instance was not given to the password authenticator.');
         }
 
-        if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
-            throw new InvalidArgumentException('The password authenticator requires a username and password.');
+        if (!array_key_exists('apiKey', $config) || !array_key_exists('accountKey', $config)) {
+            throw new InvalidArgumentException('The password authenticator requires an apiKey and accountKey.');
         }
 
-        $this->client->authenticate($config['username'], $config['password'], 'http_password');
+        $this->client->authenticate($config['accountKey'], $config['accountKey'], 'http_password');
 
         return $this->client;
     }

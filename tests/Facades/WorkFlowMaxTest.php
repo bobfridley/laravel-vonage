@@ -1,23 +1,23 @@
 <?php
 /*
- * This file is part of Laravel Vonage.
+ * This file is part of Laravel WorkFlowMax.
  *
  * (c) Bob Fridley <robert.fridley@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace BobFridley\Tests\Vonage\Facades;
-use BobFridley\Vonage\VonageManager;
-use BobFridley\Vonage\Facades\Vonage;
+namespace BobFridley\Tests\WorkFlowMax\Facades;
+use BobFridley\WorkFlowMax\WorkFlowMaxManager;
+use BobFridley\WorkFlowMax\Facades\WorkFlowMax;
 use BobFridley\TestBenchCore\FacadeTrait;
-use BobFridley\Tests\Vonage\AbstractTestCase;
+use BobFridley\Tests\WorkFlowMax\AbstractTestCase;
 /**
- * This is the vonage facade test class.
+ * This is the workflowmax facade test class.
  *
  * @author Bob Fridley <robert.fridley@gmail.com>
  */
-class VonageTest extends AbstractTestCase
+class WorkFlowMaxTest extends AbstractTestCase
 {
     use FacadeTrait;
     /**
@@ -27,7 +27,7 @@ class VonageTest extends AbstractTestCase
      */
     protected function getFacadeAccessor()
     {
-        return 'vonage';
+        return 'workflowmax';
     }
     /**
      * Get the facade class.
@@ -36,7 +36,7 @@ class VonageTest extends AbstractTestCase
      */
     protected function getFacadeClass()
     {
-        return Vonage::class;
+        return WorkFlowMax::class;
     }
     /**
      * Get the facade root.
@@ -45,6 +45,6 @@ class VonageTest extends AbstractTestCase
      */
     protected function getFacadeRoot()
     {
-        return VonageManager::class;
+        return WorkFlowMaxManager::class;
     }
 }

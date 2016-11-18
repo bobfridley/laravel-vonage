@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of Laravel Vonage.
+ * This file is part of Laravel WorkFlowMax.
  *
  * (c) Bob Fridley <robert.fridley@gmail.com>
  *
@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BobFridley\Vonage;
+namespace BobFridley\WorkFlowMax;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use Illuminate\Contracts\Container\Container;
@@ -17,11 +17,11 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
 
 /**
- * This is the vonage service provider class.
+ * This is the workflowmax service provider class.
  *
  * @author Bob Fridley <robert.fridley@gmail.com>
  */
-class VonageServiceProvider extends ServiceProvider
+class WorkFlowMaxServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
@@ -40,15 +40,15 @@ class VonageServiceProvider extends ServiceProvider
      */
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../config/vonage.php');
+        $source = realpath(__DIR__.'/../config/workflowmax.php');
 //dd('source', $source);
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
-            $this->publishes([$source => config_path('vonage.php')]);
+            $this->publishes([$source => config_path('workflowmax.php')]);
         } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure('vonage');
+            $this->app->configure('workflowmax');
         }
 
-        $this->mergeConfigFrom($source, 'vonage');
+        $this->mergeConfigFrom($source, 'workflowmax');
     }
 
     /**
@@ -70,11 +70,11 @@ class VonageServiceProvider extends ServiceProvider
      */
     protected function registerFactory()
     {
-        $this->app->singleton('vonage.factory', function () {
-            return new VonageFactory();
+        $this->app->singleton('workflowmax.factory', function () {
+            return new WorkFlowMaxFactory();
         });
 
-        $this->app->alias('vonage.factory', VonageFactory::class);
+        $this->app->alias('workflowmax.factory', WorkFlowMaxFactory::class);
     }
 
     /**
@@ -84,13 +84,13 @@ class VonageServiceProvider extends ServiceProvider
      */
     protected function registerManager()
     {
-        $this->app->singleton('vonage', function (Container $app) {
+        $this->app->singleton('workflowmax', function (Container $app) {
             $config = $app['config'];
-            $factory = $app['vonage.factory'];
+            $factory = $app['workflowmax.factory'];
 
-            return new VonageManager($config, $factory);
+            return new WorkFlowMaxManager($config, $factory);
         });
-        $this->app->alias('vonage', VonageManager::class);
+        $this->app->alias('workflowmax', WorkFlowMaxManager::class);
     }
 
     /**
@@ -100,11 +100,11 @@ class VonageServiceProvider extends ServiceProvider
      */
     protected function registerBindings()
     {
-        $this->app->bind('vonage.connection', function (Container $app) {
-            $manager = $app['vonage'];
+        $this->app->bind('workflowmax.connection', function (Container $app) {
+            $manager = $app['workflowmax'];
             return $manager->connection();
         });
-        $this->app->alias('vonage.connection', Client::class);
+        $this->app->alias('workflowmax.connection', Client::class);
     }
     
     /**
@@ -115,9 +115,9 @@ class VonageServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'vonage.factory',
-            'vonage',
-            'vonage.connection',
+            'workflowmax.factory',
+            'workflowmax',
+            'workflowmax.connection',
         ];
     }
 }

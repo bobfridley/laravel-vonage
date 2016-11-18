@@ -1,33 +1,33 @@
 <?php
 /*
- * This file is part of Laravel Vonage.
+ * This file is part of Laravel WorkFlowMax.
  *
  * (c) Bob Fridley <robert.fridley@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace BobFridley\Vonage;
+namespace BobFridley\WorkFlowMax;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use InvalidArgumentException;
 /**
- * This is the vonage factory class.
+ * This is the workflowmax factory class.
  *
  * @author Bob Fridley <robert.fridley@gmail.com>
  */
-class VonageFactory
+class WorkFlowMaxFactory
 {
     /**
      * [$base_uri description]
      * 
      * @var string
      */
-    public $base_uri = 'https://my.vonagebusiness.com';
+    public $base_uri = 'https://api.workflowmax.com';
 
     /**
-     * Make a new vonage client.
+     * Make a new workflowmax client.
      *
      * @param string[] $config
      *
@@ -51,32 +51,32 @@ class VonageFactory
      */
     protected function getConfig(array $config)
     {
-        if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
-            throw new InvalidArgumentException('The vonage client requires authentication.');
+        if (!array_key_exists('apiKey', $config) || !array_key_exists('accountKey', $config)) {
+            throw new InvalidArgumentException('The workflowmax client requires authentication.');
         }
 
-        return array_only($config, ['username', 'password']);
+        return array_only($config, ['apiKey', 'accountKey']);
     }
     
     /**
-     * Get the vonage client.
+     * Get the workflowmax client.
      *
      * @param string[] $auth
      *
-     * @return \Vonage\Client
+     * @return \WorkFlowMax\Client
      */
     protected function getClient(array $auth)
     {
         $this->client = new Client(array('base_uri' => $this->base_uri));
         $this->cookie = new CookieJar();
 
-        $response = $this->client->get($this->base_uri . '/appserver/rest/user/null', [
+        $response = $this->client->get($this->base_uri . '/job.api', [
             'cookies' => $this->cookie,
             'query' => [
-                'htmlLogin' => $auth['username'],
-                'htmlPassword' => $auth['password']
+                'apiKey' => $auth['apiKey'],
+                'accountKey' => $auth['accountKey']
             ],
-            'headers' => ['X-Vonage' => 'vonage']
+            'headers' => ['X-WorkFlowMax' => 'workflowmax']
         ]);
 
         return $this->client;

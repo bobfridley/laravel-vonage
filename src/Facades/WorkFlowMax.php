@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of Laravel Vonage.
+ * This file is part of Laravel WorkFlowMax.
  *
  * (c) Bob Fridley <robert.fridley@gmail.com>
  *
@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace BobFridley\Vonage\Facades;
+namespace BobFridley\WorkFlowMax\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * This is the vonage facade class.
+ * This is the workflowmax facade class.
  *
  * @author Bob Fridley <robert.fridley@gmail.com>
  */
-class Vonage extends Facade
+class WorkFlowMax extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -27,6 +27,6 @@ class Vonage extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'vonage';
+        return 'workflowmax';
     }
 }

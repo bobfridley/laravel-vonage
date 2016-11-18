@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of Laravel Vonage.
+ * This file is part of Laravel WorkFlowMax.
  *
  * (c) Bob Fridley <robert.fridley@gmail.com>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BobFridley\Vonage\Authenticators;
+namespace BobFridley\WorkFlowMax\Authenticators;
 
 use InvalidArgumentException;
 
@@ -25,12 +25,12 @@ class AuthenticatorFactory
      *
      * @param string $method
      *
-     * @return \BobFridley\Vonage\Authenticators\AuthenticatorInterface
+     * @return \BobFridley\WorkFlowMax\Authenticators\AuthenticatorInterface
      */
     public function make($method)
     {
         switch ($method) {
-            case 'password':
+            case 'accountKey':
                 return new PasswordAuthenticator();
         }
 
