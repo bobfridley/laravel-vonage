@@ -8,8 +8,11 @@
  * file that was distributed with this source code.
  */
 namespace BobFridley\Vonage;
-use Vonage\Client;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\FileCookieJar;
 use InvalidArgumentException;
+
 /**
  * This is the vonage factory class.
  *
@@ -18,42 +21,87 @@ use InvalidArgumentException;
 class VonageFactory
 {
     /**
+     * [$base_uri description]
+     * 
+     * @var string
+     */
+    protected $base_uri = 'https://my.vonagebusiness.com';
+
+    /**
+     * [$cookie description]
+     * @var \GuzzleHttp\Cookie\CookieJar
+     */
+    private $cookie;
+
+    /**
+     * [$cookieFile description]
+     * @var string
+     */
+    private $cookieFile;
+
+    /**
+     * [$cookieJar description]
+     * @var GuzzleHttp\Cookie\FileCookieJar
+     */
+    private $cookieJar;
+
+    /**
      * Make a new vonage client.
      *
-     * @param string[] $config
+     * @param array[] $config
      *
-     * @return \Vonage\Client
+     * @return \GuzzleHttp\Client
      */
+    
     public function make(array $config)
     {
         $config = $this->getConfig($config);
+
         return $this->getClient($config);
     }
+    
     /**
      * Get the configuration data.
      *
-     * @param string[] $config
+     * @param array[] $config
      *
      * @throws \InvalidArgumentException
      *
-     * @return string[]
+     * @return array[]
      */
     protected function getConfig(array $config)
     {
         if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
             throw new InvalidArgumentException('The vonage client requires authentication.');
         }
+
         return array_only($config, ['username', 'password']);
     }
+    
     /**
      * Get the vonage client.
      *
-     * @param string[] $auth
+     * @param array[] $auth
      *
      * @return \Vonage\Client
      */
     protected function getClient(array $auth)
     {
-        return new Client($auth['username'], $auth['password']);
+        $this->cookieFile = storage_path() . '/guzzlehttp/cookies/vonage/' . $auth['username'] . '.txt';
+
+        $cookieJar = new FileCookieJar($this->cookieFile, true);
+
+        $this->client = new Client(array('base_uri' => $this->base_uri, 'cookies' => $cookieJar));
+
+        $response = $this->client->get($this->base_uri . '/appserver/rest/user/null', [
+            'cookies' => $cookieJar,
+            'query' => [
+                'htmlLogin' => $auth['username'],
+                'htmlPassword' => $auth['password']
+            ],
+            'headers' => ['X-Vonage' => 'vonage']
+        ]);
+
+        return $this->client;
     }
 }

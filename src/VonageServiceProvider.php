@@ -9,11 +9,13 @@
  */
 namespace BobFridley\Vonage;
 
-use Vonage\Client;
+use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
+
 /**
  * This is the vonage service provider class.
  *
@@ -38,6 +40,7 @@ class VonageServiceProvider extends ServiceProvider
     protected function setupConfig()
     {
         $source = realpath(__DIR__.'/../config/vonage.php');
+//dd('source', $source);
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('vonage.php')]);
         } elseif ($this->app instanceof LumenApplication) {
@@ -95,6 +98,7 @@ class VonageServiceProvider extends ServiceProvider
         });
         $this->app->alias('vonage.connection', Client::class);
     }
+    
     /**
      * Get the services provided by the provider.
      *
