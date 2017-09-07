@@ -146,12 +146,13 @@ class Vonage
 
                         // remove 1st digit = 1
                         $onCallWithNumber = substr($extentionDetails['onCallWith'], 1, 10);
-
+// dd($onCallWith, $onCallWithNumber, $onCallWithName);
                         // get Freshdesk company
                         $company = Freshdesk::getCompanyByPhone($onCallWithNumber);
-                        
+// dd($onCallWithName, $onCallWithNumber);
                         $onCallWith = (count($company) === 0)
-                            ? (!empty($onCallWithName) ? $onCallWithName : $onCallWithNumber)
+                            // ? (!empty($onCallWithName) ? $onCallWithName : $onCallWithNumber)
+                            ? ($onCallWithName == 'null' ? $onCallWithNumber : $onCallWithName)
                             : $company[0]['company'];
                     }
                 }
