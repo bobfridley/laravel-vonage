@@ -19,7 +19,7 @@
         "php": ">=7.0.0",
         "illuminate/contracts": "^5.2.8",
         "illuminate/support": "^5.2.8",
-        "graham-campbell/manager": "^3.0",
+        "graham-campbell/manager": "^3.0"
     },
     "require-dev": {
         "graham-campbell/testbench": "^3.4",
