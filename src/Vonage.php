@@ -5,34 +5,34 @@ namespace BobFridley\Vonage;
 use Carbon\Carbon;
 use DateTime;
 use App\Components\Vonage\Exceptions\BadResponse;
-use App\Components\Freshdesk\Freshdesk;
+use App\Components\Crm\Crm;
 
 class Vonage
 {
     /**
      * [$base_uri description]
-     * 
+     *
      * @var string
      */
     public $base_uri = 'https://my.vonagebusiness.com';
 
     /**
      * [$cookie description]
-     * 
+     *
      * @var [type]
      */
     private $cookie;
 
     /**
      * [$client description]
-     * 
+     *
      * @var [type]
      */
     private $client;
 
     /**
      * [$auth description]
-     * 
+     *
      * @var array
      */
     public $auth = array();
@@ -59,7 +59,7 @@ class Vonage
         $this->client = \Vonage::connection($connection);
         $this->auth = \Vonage::getConnectionConfig($connection);
     }
-    
+
     /**
      * [makeRequest description]
      * @param  [type] $uri [description]
@@ -141,15 +141,15 @@ class Vonage
                                 $directionIcon = '';
                                 break;
                         }
-                        
+
                         $onCallWithName = $extentionDetails['onCallWithName'];
 
                         // remove 1st digit = 1
                         $onCallWithNumber = substr($extentionDetails['onCallWith'], 1, 10);
-                        
-                        // get Freshdesk company
-                        $company = Freshdesk::getCompanyByPhone($onCallWithNumber);
-                        
+
+                        // get Crm company
+                        $company = Crm::getCompanyByPhone($onCallWithNumber);
+
                         $onCallWith = (count($company) === 0)
                             // ? (!empty($onCallWithName) ? $onCallWithName : $onCallWithNumber)
                             ? ($onCallWithName == 'null' ? $onCallWithNumber : $onCallWithName)
